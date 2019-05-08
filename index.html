@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">      
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Rock Paper Scissors</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+</head>
+<body>
+    <div class="container">            
+        <div class="jumbotron-fluid row p-3 p-md-5 text-white rounded bg-dark">
+            <div class="col col-lg-2"><h3 class="left"><ul><u>You</u></ul><ul id="score">0</ul></div>
+            <div class="col col-lg-8"><h1 id="mainMenu" class="display-4">Rock Paper Scissors</h1></div>
+            <div class="col col-lg-2"><h3 class="right"><ul><u>Other</u></ul><ul id="otherPlayer">0</ul></h3></div>
+        </div>
+        <div class="row p-3 p-md-3 text-white rounded bg-dark">
+            <div class="col col-lg-2"><h3 class="left"></h3></div>
+            <div class="col col-lg-8"><h2 class="main">Let's play the game!</h2></div>
+            <div class="col col-lg-2"><h3 class="right"></h3></div>
+        </div>
+        <div class="row text-white rounded bg-dark">
+            <div class="col col-lg-2"><h3 class="left"></h3></div>
+            <div class="col col-lg-8"><h1 class="main">
+                <a href="#"><img class="img-thumbnail choiceImg" id ="rock" src="assets/images/rock.jpg"></a>
+                <a href="#"><img class="img-thumbnail choiceImg" id ="paper" src="assets/images/paper.png"></a>  
+                <a href="#"><img class="img-thumbnail choiceImg" id ="scissor" src="assets/images/scissors.png"></a> 
+            </div> 
+            <div class="col col-lg-2"><h3 class="right"></h3></div>
+        </div>
+        <div class="row text-white rounded bg-dark">
+            <div class="col col-lg-2"><h3 class="left"></h3></div>
+            <div class="col col-lg-8"><h4 class="main p-3 p-md-5">click your pick!</h4></div> 
+            <div class="col col-lg-2"><h3 class="right"></h3></div>
+        </div>
+        <!-- SOme information about the game and rules etc -->
+        <div id="content">
+            <div class="row">
+                <div class="col col-lg-2"><h3 class="left"></h3></div>
+                <div class="col col-lg-8 p-3 p-md-5">
+                    <h2>What is this game for? Why?</h2>
+                    <p>
+                        Play rock paper scissors with a friend/peer over the web to break a tie, resolve a conflict, or if you want to kill time!
+                    </p>
+                    <h2>How to play?</h2>
+                    <p>
+                        <li>
+                            send the link above to other player
+                        </li>
+                        <li>
+                            Wait for them to join online
+                        </li>
+                        <li>
+                            click on the choice so the game begins
+                        </li>
+                    </p>
+                    <h2>The rules</h2>
+                    <p>
+                        Scissor cuts paper. Paper covers rock. Rock smashes scissors. Now go figure!
+                    </p>
+                    <p id="copyright">
+                        © 2019 Copyright: Deepa Gokhale-Bhujle
+                    </p>
+                </div>
+                <div class="col col-lg-2"><h3 class="right"></h3></div>
+            </div>
+        </div>
+        <script src="assets/javascript/rps.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $(document).on("click",".choiceImg", function(){
+                //this.player choice
+                var playerPick = $(this).attr("id");
+                //console.log("you picked: " + playerPick);
+                sendPick(playerPick);
+                var winLoss = sendPick(playerPick);
+                alert("result: " + winLoss);
+            });
+        });
+        </script>
+    </div>   
+</body>
+</html>

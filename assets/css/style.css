@@ -1,0 +1,43 @@
+.container{
+    margin-left: 0px;
+    margin-right: 0px;
+    float: right;
+    background-color: #acb7bd;
+}
+
+.main{
+    margin-left: 35%;
+    color: #ffffff;
+}
+
+#mainMenu{
+    margin-left: 20%;
+    color: blueviolet;
+    font-weight: bolder;
+
+}
+
+.right{
+    float: right;
+}
+
+.left{
+    float: left;
+}
+
+.choiceImg{
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 100px;
+  }
+
+  #content{
+      margin-left: 15%;
+  }
+
+  #copyright{
+      margin-top:100px;
+      margin-bottom: 0%;
+      color: #ffffff;
+  }
