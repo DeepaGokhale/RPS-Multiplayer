@@ -1,20 +1,19 @@
 .container{
-    margin-left: 0px;
-    margin-right: 0px;
-    float: right;
     background-color: #acb7bd;
 }
 
 .main{
-    margin-left: 35%;
+    margin-left: 30%;
     color: #ffffff;
+    margin-bottom: 5%;
 }
 
 #mainMenu{
     margin-left: 20%;
     color: blueviolet;
     font-weight: bolder;
-
+    margin-bottom: 5%;
+    margin-top: 10%;
 }
 
 .right{

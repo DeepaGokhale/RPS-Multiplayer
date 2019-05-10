@@ -9,33 +9,30 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Rock Paper Scissors</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 </head>
 <body>
     <div class="container">            
-        <div class="jumbotron-fluid row p-3 p-md-5 text-white rounded bg-dark">
+        <div class="jumbotron-fluid d-flex justify-content-center text-white rounded bg-dark">
             <div class="col col-lg-2"><h3 class="left"><ul><u>You</u></ul><ul id="score">0</ul></div>
-            <div class="col col-lg-8"><h1 id="mainMenu" class="display-4">Rock Paper Scissors</h1></div>
+            <div class="col col-lg-8">
+                <h1 id="mainMenu" class="display-4">Rock Paper Scissors</h1>
+                <h2 class="main" id="winLoss">Let's play the game!</h2>
+                <p></p>
+                <p class="main"> 
+                    <a href="#"><img class="img-thumbnail choiceImg" id ="rock" src="assets/images/rock.jpg"></a>
+                    <a href="#"><img class="img-thumbnail choiceImg" id ="paper" src="assets/images/paper.png"></a>  
+                    <a href="#"><img class="img-thumbnail choiceImg" id ="scissor" src="assets/images/scissors.png"></a> 
+                </p>
+                <h4 class="main">When ready click your pick!</h4>
+                <p class="main">
+                    <label for="code-input">Code:</label>
+                    <input id="code-input" type="text">
+                    <button class="btn-default" id="playGame">Start/Join Game</button>
+                </p>
+            </div>
             <div class="col col-lg-2"><h3 class="right"><ul><u>Other</u></ul><ul id="otherPlayer">0</ul></h3></div>
-        </div>
-        <div class="row p-3 p-md-3 text-white rounded bg-dark">
-            <div class="col col-lg-2"><h3 class="left"></h3></div>
-            <div class="col col-lg-8"><h2 class="main">Let's play the game!</h2></div>
-            <div class="col col-lg-2"><h3 class="right"></h3></div>
-        </div>
-        <div class="row text-white rounded bg-dark">
-            <div class="col col-lg-2"><h3 class="left"></h3></div>
-            <div class="col col-lg-8"><h1 class="main">
-                <a href="#"><img class="img-thumbnail choiceImg" id ="rock" src="assets/images/rock.jpg"></a>
-                <a href="#"><img class="img-thumbnail choiceImg" id ="paper" src="assets/images/paper.png"></a>  
-                <a href="#"><img class="img-thumbnail choiceImg" id ="scissor" src="assets/images/scissors.png"></a> 
-            </div> 
-            <div class="col col-lg-2"><h3 class="right"></h3></div>
-        </div>
-        <div class="row text-white rounded bg-dark">
-            <div class="col col-lg-2"><h3 class="left"></h3></div>
-            <div class="col col-lg-8"><h4 class="main p-3 p-md-5">click your pick!</h4></div> 
-            <div class="col col-lg-2"><h3 class="right"></h3></div>
         </div>
         <!-- SOme information about the game and rules etc -->
         <div id="content">
@@ -69,16 +66,24 @@
                 <div class="col col-lg-2"><h3 class="right"></h3></div>
             </div>
         </div>
+
         <script src="assets/javascript/rps.js"></script>
         <script type="text/javascript">
+
         $(document).ready(function(){
+            //on connection create unique game Id and user
+            //console.log(key); var key = 
+            $(document).on("click","#playGame", function(){
+                playGame();
+            });
+
             $(document).on("click",".choiceImg", function(){
                 //this.player choice
                 var playerPick = $(this).attr("id");
                 //console.log("you picked: " + playerPick);
                 sendPick(playerPick);
-                var winLoss = sendPick(playerPick);
-                alert("result: " + winLoss);
+                //var winLoss = sendPick(playerPick);
+                //alert("result: " + winLoss);
             });
         });
         </script>
