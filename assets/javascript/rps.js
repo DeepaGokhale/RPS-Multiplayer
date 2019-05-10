@@ -39,6 +39,9 @@ var result;
 
  function playGame(){
      //Initially there is no new data so create the data
+     $("#score").text("");
+     $("#otherPlayer").text("");
+
      currKey = $("#code-input").val();     
      var gameRef = database.ref("/gameData");
      //set the playerId in the local storage
@@ -55,7 +58,8 @@ var result;
             player2: "",
             choice2: ""
           });
-          console.log(newGameRef.key);
+          //share the new Key on screen
+          $("#game_Code").text(" " + newGameRef.key)
           currKey = newGameRef.key;
      }
      else
