@@ -31,6 +31,13 @@
     width: 100px;
   }
 
+  .choiceImg:hover{
+    -webkit-filter: blur(3px);
+	filter: blur(3px);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+  }
+
   #content{
       margin-left: 15%;
   }
