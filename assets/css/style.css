@@ -18,10 +18,22 @@
 
 .right{
     float: right;
+    margin-top: 15px;
 }
 
 .left{
     float: left;
+    margin-top: 15px;
+}
+
+.bottomright{
+    float: right;
+    margin-top: 400px;
+}
+
+.bottomleft{
+    float: left;
+    margin-top: 400px;
 }
 
 .choiceImg{

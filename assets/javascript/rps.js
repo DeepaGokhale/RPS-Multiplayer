@@ -45,7 +45,6 @@ var result;
      currKey = $("#code-input").val();     
      var gameRef = database.ref("/gameData");
      //set the playerId in the local storage
-     sessionStorage.clear();
      sessionStorage.setItem("current_player", currPlayer);
 
      if (currKey == "")
@@ -59,7 +58,7 @@ var result;
             choice2: ""
           });
           //share the new Key on screen
-          $("#game_Code").text(" " + newGameRef.key)
+          $("#game_Code").text(" " + newGameRef.key);
           currKey = newGameRef.key;
      }
      else
@@ -190,12 +189,24 @@ function alertPlayers(winner)
     console.log(currentPlayer + " " + winner);
     if(currentPlayer == winner)
     {
+        var totalWins = sessionStorage.getItem("wins");
+        totalWins++;
+        sessionStorage.setItem("wins", totalWins);
+        $("#wins").text(totalWins);
         alert("You won!");
     }
     else
     {
+        var totalLosses = sessionStorage.getItem("losses");
+        totalLosses++;
+        sessionStorage.setItem("losses", totalLosses);
+        $("#losses").text(totalLosses);
         alert("You lost!");
     }
+    $("#score").text("");
+    $("#otherPlayer").text("");
+    $("#game_Code").text('');
+    $("#code-input").val('');     
 }
 
 

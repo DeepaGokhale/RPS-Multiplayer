@@ -15,7 +15,20 @@
 <body>
     <div class="container">            
         <div class="jumbotron-fluid d-flex justify-content-center text-white rounded bg-dark">
-            <div class="col col-lg-2"><h3 class="left"><ul><u>You</u></ul><ul id="score"></ul></div>
+            <div class="col col-lg-2">
+                <h3 class="left">
+                    <ul>
+                        <u>Wins</u>
+                    </ul>
+                    <ul id="wins"></ul>
+                </h3>
+                <h3 class="bottomleft">
+                    <ul>
+                        <u>You</u>
+                    </ul>
+                    <ul id="score"></ul>
+                </h3>
+            </div>            
             <div class="col col-lg-8">
                 <h1 id="mainMenu" class="display-4">Rock Paper Scissors</h1>
                 <h2 class="main" id="">Let's play the game!</h2>
@@ -33,7 +46,19 @@
                     <button class="btn-default" id="playGame">Start/Join Game</button>
                 </p>
             </div>
-            <div class="col col-lg-2"><h3 class="right"><ul><u>Opponent</u></ul><ul id="otherPlayer"></ul></h3></div>
+            <div class="col col-lg-2">
+                <h3 class="right">
+                    <ul><u>Losses</u></ul>
+                    <ul id="losses"></ul>
+                </h3>
+                <h3 class="bottomright">
+                    <ul>
+                        <u>Opponent</u>
+                    </ul>
+                    <ul id="otherPlayer"></ul>
+                </h3>
+            </div>
+            
         </div>
         <!-- SOme information about the game and rules etc -->
         <div id="content">
@@ -74,6 +99,9 @@
         $(document).ready(function(){
             //on connection create unique game Id and user
             //console.log(key); var key = 
+            sessionStorage.setItem("losses", 0);
+            sessionStorage.setItem("wins", 0);
+
             $(document).on("click","#playGame", function(){
                 playGame();
             });
