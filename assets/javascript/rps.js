@@ -39,8 +39,11 @@ var result;
 
  function playGame(){
      //Initially there is no new data so create the data
-     $("#score").text("");
+     $("#choice").text("You Picked: ");
      $("#otherPlayer").text("");
+     $("#scissor").removeClass("selected");
+     $("#rock").removeClass("selected");
+     $("#paper").removeClass("selected");
 
      currKey = $("#code-input").val();     
      var gameRef = database.ref("/gameData");
@@ -79,7 +82,7 @@ function sendPick(pick){
     //save the pick to db
     //update the record
     console.log("picked the pick");
-    $("#score").text(pick);
+    $("#choice").text("You Picked: " + pick);
     if (isNew)
     {
         database.ref("/gameData/"+ currKey).update({
@@ -101,6 +104,11 @@ function sendPick(pick){
     var playerChoice2 = result.choice2;  
     var player1 = result.player1;
     var player2 = result.player2;     
+
+    var img1 = "#" + playerChoice1;
+    $(img1).addClass("selected");
+    var img2 = "#" + playerChoice2;
+    $(img2).addClass("selected");
 
     if (playerChoice1 == "" || playerChoice2 == "")
     {
@@ -134,13 +142,15 @@ function winnerLogic(playerChoice1, playerChoice2, player1, player2)
     //basic logical flow for winner and looser
     if (playerChoice1 == "rock") 
         {
+            $("#rock").addClass("selected");
             if (playerChoice2 == "paper")
             {
-                console.log(player2);
+                $("#paper").addClass("selected");
                 alertPlayers(player2);
             }
             else if (playerChoice2 == "scissor")
             {
+                $("#scissor").addClass("selected");
                 alertPlayers(player1);              
             }
             else
@@ -151,12 +161,15 @@ function winnerLogic(playerChoice1, playerChoice2, player1, player2)
 
     if (playerChoice1 == "paper")
     {
+        $("#paper").addClass("selected");
         if (playerChoice2 == "scissor")
         {
+            $("#scissor").addClass("selected");
             alertPlayers(player2);
         }
         else if (playerChoice2 == "rock")
         {
+            $("#rock").addClass("selected");
             alertPlayers(player1);
         }
         else
@@ -167,12 +180,15 @@ function winnerLogic(playerChoice1, playerChoice2, player1, player2)
 
     if (playerChoice1 == "scissor")
     {
+        $("#scissor").addClass("selected");
         if (playerChoice2 == "rock")
         {
+            $("#rock").addClass("selected");
             alertPlayers(player2);
         }
         else if (playerChoice2 == "paper")
         {
+            $("#paper").addClass("selected");
             alertPlayers(player1);
         }
         else
@@ -193,6 +209,8 @@ function alertPlayers(winner)
         totalWins++;
         sessionStorage.setItem("wins", totalWins);
         $("#wins").text(totalWins);
+        $("#code-input").val(''); 
+        currKey = $("#code-input").val(); 
         alert("You won!");
     }
     else
@@ -201,12 +219,12 @@ function alertPlayers(winner)
         totalLosses++;
         sessionStorage.setItem("losses", totalLosses);
         $("#losses").text(totalLosses);
+        $("#code-input").val(''); 
+        currKey = $("#code-input").val(); 
         alert("You lost!");
     }
-    $("#score").text("");
     $("#otherPlayer").text("");
     $("#game_Code").text('');
-    $("#code-input").val('');     
 }
 
 

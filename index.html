@@ -22,12 +22,6 @@
                     </ul>
                     <ul id="wins"></ul>
                 </h3>
-                <h3 class="bottomleft">
-                    <ul>
-                        <u>You</u>
-                    </ul>
-                    <ul id="score"></ul>
-                </h3>
             </div>            
             <div class="col col-lg-8">
                 <h1 id="mainMenu" class="display-4">Rock Paper Scissors</h1>
@@ -40,6 +34,7 @@
                     <a href="#"><img class="img-thumbnail choiceImg" id ="scissor" src="assets/images/scissors.png"></a> 
                 </p>
                 <h4 class="main">When ready click your pick!</h4>
+                <h4 id="choice" class="main">You Picked: </h4>
                 <p class="main">
                     <label for="code-input">Code:</label>
                     <input id="code-input" type="text">
@@ -50,12 +45,6 @@
                 <h3 class="right">
                     <ul><u>Losses</u></ul>
                     <ul id="losses"></ul>
-                </h3>
-                <h3 class="bottomright">
-                    <ul>
-                        <u>Opponent</u>
-                    </ul>
-                    <ul id="otherPlayer"></ul>
                 </h3>
             </div>
             
@@ -107,12 +96,15 @@
             });
 
             $(document).on("click",".choiceImg", function(){
-                //this.player choice
-                var playerPick = $(this).attr("id");
-                //console.log("you picked: " + playerPick);
-                sendPick(playerPick);
-                //var winLoss = sendPick(playerPick);
-                //alert("result: " + winLoss);
+                if (currKey != "")
+                {
+                    //this.player choice
+                    var playerPick = $(this).attr("id");
+                    //console.log("you picked: " + playerPick);
+                    sendPick(playerPick);
+                    //var winLoss = sendPick(playerPick);
+                    //alert("result: " + winLoss);
+                }
             });
         });
         </script>
